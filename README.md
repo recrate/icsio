@@ -9,8 +9,6 @@
 
 ### Initial request
 
-To perform a basic ICS modification, provide the API with a target calendar URL using `encodeURIComponent("https://example.com")` `https%3A%2F%2Fexample.com`. Then you can add multiple pairs of `rin` and `rout` querys to supply the regex expression and the output. These also have to be encoded URI components.
-
 To perform a basic ICS modification, provide the API with a target calendar URL, encoded using `encodeURIComponent`:
 
 ```js
