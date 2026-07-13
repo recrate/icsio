@@ -3,7 +3,7 @@
   &nbsp;icsio
 </h1>
 
-`icsio` is an API for modifing calendar Subscriptions.
+`icsio` is an API for modifing calendar subscriptions.
 
 ## Get started
 
