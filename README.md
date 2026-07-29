@@ -5,6 +5,8 @@
 
 `icsio` is an API for modifing calendar subscriptions.
 
+<img src="./assets/Frame.svg">
+
 ## Get started
 
 ### Initial request
