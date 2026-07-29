@@ -13,16 +13,16 @@ use reqwest::Client;
 struct Params {
     url: String,
     #[serde(default)]
-    rin: Vec<String>,
+    pattern: Vec<String>,
     #[serde(default)]
-    rout: Vec<String>,
+    replacer: Vec<String>,
 }
 
 async fn handler(
     State(client): State<Client>,
     Query(params): Query<Params>,
 ) -> impl IntoResponse {
-    if params.rin.len() != params.rout.len() {
+    if params.pattern.len() != params.replacer.len() {
         return StatusCode::BAD_REQUEST.into_response();
     }
 
@@ -30,8 +30,8 @@ async fn handler(
         Ok(response) => {
             let text = match response.text().await {
                 Ok(mut text) => {
-                    for i in 0..params.rin.len() {
-                        text = Regex::new(&params.rin[i]).unwrap().replace_all(&text, &params.rout[i]).to_string();
+                    for i in 0..params.pattern.len() {
+                        text = Regex::new(&params.pattern[i]).unwrap().replace_all(&text, &params.replacer[i]).to_string();
                     }
                     (StatusCode::OK, text).into_response()
                 },
