@@ -3,9 +3,9 @@
   &nbsp;icsio
 </h1>
 
-`icsio` is an API for modifing calendar subscriptions.
+`icsio` is a lightweight API for modifying calendar subscriptions. It's written in Rust for optimized performance.
 
-<img src="./assets/Frame.svg">
+![Frame](./assets/Frame%20Flat.svg)
 
 ## Get started
 
