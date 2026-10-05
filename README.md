@@ -13,7 +13,7 @@
 
 To perform a basic ICS modification, provide the API with a target calendar URL, encoded using `encodeURIComponent`:
 
-```js
+```js, index.js
 encodeURIComponent("https://example.com") // https%3A%2F%2Fexample.com
 ```
 
