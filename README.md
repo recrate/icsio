@@ -13,7 +13,7 @@
 
 To perform a basic ICS modification, provide the API with a target calendar URL, encoded using `encodeURIComponent`:
 
-```js, index.js
+```js
 encodeURIComponent("https://example.com") // https%3A%2F%2Fexample.com
 ```
 
@@ -21,4 +21,12 @@ Pass this as the `url` query parameter. You can then supply one or more pairs of
 
 ```http
 GET http://localhost:3000?url=https%3A%2F%2Fexample.com&pattern=%28%3Fm%29%5ESUMMARY%3A%5CS%2B%20&replacer=SUMMARY%3A
+```
+
+## Setup
+
+Set the addr and port to bind the API endpoint.
+
+```dotenv
+BIND="0.0.0.0:3000"
 ```

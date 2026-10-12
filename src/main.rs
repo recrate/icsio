@@ -1,3 +1,4 @@
+use std::env;
 use axum::{serve, Router};
 use axum::extract::State;
 use axum_extra::extract::Query;
@@ -46,11 +47,13 @@ async fn handler(
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().ok();
+
     let client = Client::new();
 
     let app = Router::new().route("/", get(handler)).with_state(client);
 
-    let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    println!("Listening on http://0.0.0.0:3000");
+    let listener = TcpListener::bind(env::var("BIND").unwrap_or("0.0.0.0:3000".to_string())).await.unwrap();
+    println!("Listening on http://{}", env::var("BIND").unwrap_or("0.0.0.0:3000".to_string()));
     serve(listener, app).await.unwrap();
 }
