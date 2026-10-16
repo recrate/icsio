@@ -49,12 +49,14 @@ async fn handler(
 async fn main() -> io::Result<()> {
     dotenvy::dotenv().ok();
 
+    let addr = env::var("BIND").unwrap_or("0.0.0.0:3000".to_string());
+
     let client = Client::new();
 
     let app = Router::new().route("/", get(handler)).with_state(client);
 
-    let listener = TcpListener::bind(env::var("BIND").unwrap_or("0.0.0.0:3000".to_string())).await?;
-    println!("Listening on http://{}", env::var("BIND").unwrap_or("0.0.0.0:3000".to_string()));
+    let listener = TcpListener::bind(&addr).await?;
+    println!("Listening on http://{}", addr);
     serve(listener, app).await?;
 
     Ok(())
